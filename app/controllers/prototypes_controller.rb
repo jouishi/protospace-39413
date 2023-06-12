@@ -26,20 +26,18 @@ class PrototypesController < ApplicationController
   def edit
 
     @prototype = Prototype.find(params[:id])
+    
+
   end
 
   def update
-
-    prototype = Prototype.find(params[:id])
-
-    
-    if prototype.update(prototype_params)
-
-      redirect_to prototype_path
+    @prototype = Prototype.find(params[:id])
+  
+    if @prototype.update(prototype_params)
+      redirect_to prototype_path(@prototype)
     else
-      render :edit
+      render 'prototypes/edit'
     end
-
   end
 
   def destroy
